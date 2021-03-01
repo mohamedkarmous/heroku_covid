@@ -24,7 +24,7 @@ def predict():
     running= False
 
     return jsonify(result)
-"""
+
 @app.route("/")
 def index():
 
@@ -53,7 +53,7 @@ def index():
 
 
     return render_template('index.html', result=result)
-"""
+
 
 if __name__ == "__main__":
 
