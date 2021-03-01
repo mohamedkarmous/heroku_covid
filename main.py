@@ -3,8 +3,7 @@ import os
 import numpy as np
 
 import tensorflow as tf
-from tensorflow import keras
-from keras.preprocessing import image
+from tensorflow.keras.preprocessing import image
 image_path="covid2.jpg"
 """
 model = tf.keras.models.load_model('my_model')
