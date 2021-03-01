@@ -26,7 +26,12 @@ def predict():
     return jsonify(result)
 
 @app.route("/")
-def index():
+def home():
+    return render_template('index.html')
+
+
+@app.route("/action",methods=['POST'])
+def action():
 
     result = " "
     if request.method == "POST":
