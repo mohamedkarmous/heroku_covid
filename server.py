@@ -25,7 +25,7 @@ def predict():
 
     return jsonify(result)
 
-@app.route("/", methods=['POST', 'GET'])
+@app.route("/")
 def index():
 
     result = " "
