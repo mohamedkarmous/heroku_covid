@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Covid Classifier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+  <body>
+    <h1 style="text-align:center;">Covid image classifier</h1>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+
+        <input type="file" name="file"/>
+        <br>
+            <br>
+            <br>
+        <input type="submit" id="submitButton" value="Run"/>
+    </form>
+    </div>
+    {% if transcript != "" %}
+        <div id="speechTranscriptContainer">
+            <h1>Result</h1>
+            <p id="speechText">{{ result }}</p>
+        </div>
+    {% endif %}
+
+  </body>
+</html>
