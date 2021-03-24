@@ -6,7 +6,7 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 image_path="covid2.jpg"
 """
-model = tf.keras.models.load_model('my_model')
+model = tf.keras.models.load_model('my_model2.hdf5')
 
 # Check its architecture
 model.summary()
