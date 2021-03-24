@@ -38,5 +38,5 @@ class _CovidClassifier:
 def CovidClassifier():
     if _CovidClassifier._instance is None:
         _CovidClassifier._instance = _CovidClassifier()
-        _CovidClassifier.model = tf.keras.models.load_model('my_model.h5')
+        _CovidClassifier.model = tf.keras.models.load_model('my_model2.h5')
     return _CovidClassifier._instance
