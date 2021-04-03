@@ -5,7 +5,7 @@ import os, shutil
 
 
 
-model_result=()
+
 
 
 app = Flask(__name__,static_url_path="/static")
@@ -28,13 +28,14 @@ def predict():
 
     return jsonify(result)
 
-@app.route("/",methods=['POST','GET'])
+@app.route("/")
 def home():
     return render_template('index.html')
 
 
 @app.route("/action",methods=['POST','GET'])
 def action():
+    model_result = ()
     html1 = ""
     html2 = ""
 

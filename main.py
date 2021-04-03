@@ -4,7 +4,7 @@ import numpy as np
 
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
-from keras.models import Model
+from tensorflow.keras.models import Model
 
 """
 model = tf.keras.models.load_model('my_model2.hdf5')
