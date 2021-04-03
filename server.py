@@ -12,14 +12,15 @@ app = Flask(__name__,static_url_path="/static")
 
 @app.route("/predict", methods=['POST'])
 def predict():
-    image = request.files["file"]
+    result={}
+    image = request.files["xray_image"]
     file_name = str(random.randint(0, 100000)) + ".jpg"
     image.save(file_name)
     model = CovidClassifier()
-    result= model.predict(file_name)
-    print(result)
+    model_result = model.predict(file_name)
     os.remove(file_name)
-    result = {"result": result}
+    result["result"] = model_result[0]
+    result["proba"] = model_result[1]
 
     running= False
 
@@ -33,31 +34,32 @@ def home():
 @app.route("/action",methods=['POST'])
 def action():
 
-    result = " "
+    result = {}
     if request.method == "POST":
         print("FORM DATA RECEIVED")
 
-        if "file" not in request.files:
+        if "xray_image" not in request.files:
             return redirect(request.url)
 
-        file = request.files["file"]
+        file = request.files["xray_image"]
         if file.filename == "":
             return redirect(request.url)
 
         if file:
-            image = request.files["file"]
+            image = request.files["xray_image"]
             file_name = str(random.randint(0, 100000)) + ".jpg"
             image.save(file_name)
             model = CovidClassifier()
-            result = model.predict(file_name)
-            print(result)
+            model_result = model.predict(file_name)
             os.remove(file_name)
-            result = {"result": result}
-            result=result['result']
+            result["result"] = model_result[0]
+            result["proba"] = model_result[1]
 
 
 
-    return render_template('index.html', result=result)
+
+
+    return render_template('index.html', result=model_result[0], proba = model_result[1])
 
 
 if __name__ == "__main__":
