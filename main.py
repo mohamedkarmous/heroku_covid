@@ -30,6 +30,7 @@ def get_proba(l):
 
 class _CovidClassifier:
     model = None
+    intermediate_output=None
     _mapping = ["COVID", "NORMAL", "PNEUMONIA"]
     _instance = None
 
@@ -39,10 +40,8 @@ class _CovidClassifier:
         img = image.load_img(image_path, target_size=(256, 256))
         img = image.img_to_array(img)
         img = np.expand_dims(img, axis=0)
-        layer_name = 'dense_19'
-        intermediate_layer_model = Model(inputs=self.model.input,
-                                         outputs=self.model.get_layer(layer_name).output)
-        intermediate_output = intermediate_layer_model.predict(img)
+
+        intermediate_output = self.intermediate_layer_model.predict(img)
         p = self.model.predict(img)
         print("class probabilities : ",get_proba(intermediate_output[0]))
         print("prediction : ",self._mapping[np.argmax(p)])
@@ -58,4 +57,5 @@ def CovidClassifier():
     if _CovidClassifier._instance is None:
         _CovidClassifier._instance = _CovidClassifier()
         _CovidClassifier.model = tf.keras.models.load_model('my_model_3.h5')
+        _CovidClassifier.intermediate_layer_model = Model(inputs=_CovidClassifier.model.input,outputs=_CovidClassifier.model.get_layer("dense_19").output)
     return _CovidClassifier._instance
