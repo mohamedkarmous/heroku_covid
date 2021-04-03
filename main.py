@@ -25,7 +25,7 @@ def get_proba(l):
     if min(l) < 0:
         for i in range(len(l)):
             l[i] = l[i] + abs(min(l))
-    l2 = [(i / sum(l)) * 100 for i in l]
+    l2 = [round((i / sum(l)) * 100) for i in l]
     return (l2)
 
 class _CovidClassifier:
