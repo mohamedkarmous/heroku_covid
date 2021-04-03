@@ -28,7 +28,7 @@ def predict():
 
     return jsonify(result)
 
-@app.route("/")
+@app.route("/",methods=['POST','GET'])
 def home():
     return render_template('index.html')
 
