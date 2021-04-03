@@ -51,7 +51,6 @@ class _CovidClassifier:
         for i in range(len(proba)):
             result2+=[(self._mapping[i],proba[i])]
         result=[self._mapping[np.argmax(p)],result2]
-        print(result)
         return (result)
 
 

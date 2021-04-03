@@ -11,7 +11,7 @@
     <div>
         <form method="post" action="{{ url_for('action')}}" enctype="multipart/form-data">
 
-        <input type="file" name="file" accept=".jpg,.jpeg,.png"required="required" />
+        <input type="file" name="xray_image" accept=".jpg,.jpeg,.png"required="required" />
         <br>
             <br>
             <br>
@@ -22,7 +22,7 @@
         <div >
             <h1>Result</h1>
             <p id="resut">{{ result }}</p>
-            <h1>Result</h1>
+            <h1>probabilities</h1>
             <p id="proba">{{ proba }}</p>
         </div>
     {% endif %}

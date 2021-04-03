@@ -5,6 +5,7 @@ import os, shutil
 
 
 
+model_result=()
 
 
 app = Flask(__name__,static_url_path="/static")
@@ -13,6 +14,7 @@ app = Flask(__name__,static_url_path="/static")
 @app.route("/predict", methods=['POST'])
 def predict():
     result={}
+
     image = request.files["xray_image"]
     file_name = str(random.randint(0, 100000)) + ".jpg"
     image.save(file_name)
@@ -31,8 +33,10 @@ def home():
     return render_template('index.html')
 
 
-@app.route("/action",methods=['POST'])
+@app.route("/action",methods=['POST','GET'])
 def action():
+    html1 = ""
+    html2 = ""
 
     result = {}
     if request.method == "POST":
@@ -54,12 +58,16 @@ def action():
             os.remove(file_name)
             result["result"] = model_result[0]
             result["proba"] = model_result[1]
+            html1=model_result[0]
+            html2=model_result[1]
 
 
 
 
 
-    return render_template('index.html', result=model_result[0], proba = model_result[1])
+
+
+    return render_template('index.html', result=html1, proba = html2)
 
 
 if __name__ == "__main__":
