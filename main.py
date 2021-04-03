@@ -50,7 +50,7 @@ class _CovidClassifier:
         result2=[]
         for i in range(len(proba)):
             result2+=[(self._mapping[i],proba[i])]
-        result=[self._mapping[np.argmax(p)]+str(proba[np.argmax(p)])+"%",result2]
+        result=[self._mapping[np.argmax(p)]+" "++str(proba[np.argmax(p)])+"%",result2]
         return (result)
 
 
