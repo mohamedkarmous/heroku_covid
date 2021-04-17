@@ -4,3 +4,4 @@ numpy>=1.9.2
 tensorflow  == 2.0
 keras == 2.3.0
 pillow > 1.0.0
+h5py < 3.0.0
