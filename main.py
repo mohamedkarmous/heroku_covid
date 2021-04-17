@@ -1,10 +1,10 @@
 import os
 
 import numpy as np
-import keras
-from keras.preprocessing import image
-from keras.models import Model
 
+import tensorflow as tf
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.models import Model
 
 
 
@@ -43,6 +43,6 @@ class _CovidClassifier:
 def CovidClassifier():
     if _CovidClassifier._instance is None:
         _CovidClassifier._instance = _CovidClassifier()
-        _CovidClassifier.model = keras.models.load_model('my_model_3_best.h5')
+        _CovidClassifier.model = tf.keras.models.load_model('my_model_3.h5')
         _CovidClassifier.intermediate_layer_model = Model(inputs=_CovidClassifier.model.input,outputs=_CovidClassifier.model.get_layer("dense_19").output)
     return _CovidClassifier._instance
